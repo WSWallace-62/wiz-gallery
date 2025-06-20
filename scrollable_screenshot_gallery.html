@@ -28,8 +28,8 @@
     align-items: center;
     vertical-align: top;
     margin-right: 18px;
-    width: 340px;
-    height: 750px; /* 700px image + ~50px caption/margin */
+    width: 170px;
+    height: 350px; /* 350px image + ~50px caption/margin */
     box-sizing: border-box;
     background: transparent;
     position: relative;
@@ -37,8 +37,8 @@
 
 /* For all images by default */
 .gallery-item img {
-    height: 700px;
-    width: 340px;
+    height: 350px;
+    width: 170px;
     max-width: 100%;
     object-fit: contain;
     border-radius: 14px;
@@ -51,8 +51,8 @@
 
 /* For tall images (8 & 9): Use a scrollable viewport */
 .gallery-item.tall .scroll-viewport {
-    width: 340px;
-    height: 700px;
+    width: 170px;
+    height: 350px;
     overflow-y: auto;
     background: #fff;
     border-radius: 14px;
@@ -79,7 +79,7 @@
     text-align: center;
     font-size: 1.05rem;
     color: #333;
-    max-width: 340px;
+    max-width: 170px;
     overflow-wrap: break-word;
 }
 
@@ -90,7 +90,7 @@
             vertical-align: top;
         }
         .gallery-item img {
-    height: 700px;
+    height: 350px;
     border-radius: 14px;
     box-shadow: 0 3px 12px rgba(0,0,0,0.08);
     transition: transform 0.22s cubic-bezier(0.4,0.2,0.2,1), box-shadow 0.18s;
@@ -101,7 +101,7 @@
 .gallery-item img[src="8_appliances.png"],
 .gallery-item img[src="9_Nutrition_Facts.png"] {
     height: auto;
-    width: 340px;
+    width: 170px;
     max-width: 100%;
     display: inline-block;
     object-fit: contain;
@@ -115,7 +115,7 @@
             text-align: center;
             font-size: 1.05rem;
             color: #333;
-            max-width: 340px;
+            max-width: 170px;
             overflow-wrap: break-word;
         }
     </style>
