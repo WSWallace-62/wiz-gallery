@@ -20,6 +20,29 @@
     scrollbar-color: #bbb #fafafa;
     scrollbar-width: thin;
 }
+@media (max-width: 600px) {
+  .gallery-item,
+  .gallery-item.tall .scroll-viewport,
+  .gallery-item img,
+  .gallery-item img[src="8_appliances.png"],
+  .gallery-item img[src="9_Nutrition_Facts.png"] {
+    width: 90vw !important;
+    max-width: 350px !important;
+  }
+  .gallery-item,
+  .gallery-item.tall .scroll-viewport {
+    height: 40vw !important;
+    max-height: 220px !important;
+  }
+  .gallery-item img {
+    height: 38vw !important;
+    max-height: 200px !important;
+  }
+  .caption {
+    max-width: 90vw !important;
+    font-size: 0.94rem;
+  }
+}
 
 .gallery-item {
     display: inline-flex;
