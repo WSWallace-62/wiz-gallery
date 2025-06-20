@@ -50,21 +50,21 @@ Below, each section is explained in detail!
         /* ---------------------------------------
            RESPONSIVE DESIGN FOR SMALL SCREENS
            ---------------------------------------
-           - When screen is 600px or less, switch sizing to viewport-relative units (vw)
+           - When screen is 768px or less, switch sizing to viewport-relative units (vw)
            - Keeps images and captions readable but compact on mobile
         */
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
           .gallery-item,
           .gallery-item.tall .scroll-viewport,
           .gallery-item img,
           .gallery-item img[src="8_appliances.png"],
           .gallery-item img[src="9_Nutrition_Facts.png"] {
-            width: 33vw !important;
+            width: 50vw !important;
             max-width: 350px !important;
           }
           .gallery-item,
           .gallery-item.tall .scroll-viewport {
-            height: 60vw !important;
+            height: 100vw !important;
             max-height: 220px !important;
           }
           .gallery-item img {
