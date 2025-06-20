@@ -1,3 +1,8 @@
+<!--
+DOCUMENTATION: Scrollable Screenshot Gallery HTML
+
+This HTML file creates a horizontally scrollable gallery of PNG screenshots. It is designed to work well on desktop and mobile, and includes image captions, hover effects, and special handling for very tall images (like #8 and #9). All sizes and responsive features are customizable.
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,107 +10,164 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Screenshot Gallery</title>
     <style>
+        /*
+        PAGE/BODY STYLING
+        -----------------
+        - Light background and sans-serif font for a clean, modern look
+        */
         body {
             background: #f4f4f4;
             font-family: Arial, sans-serif;
         }
+
+        /*
+        MAIN GALLERY CONTAINER
+        ---------------------
+        - Horizontal scroll (overflow-x)
+        - No vertical scroll (overflow-y: hidden)
+        - Ensures items don't wrap (white-space: nowrap)
+        - Padding for vertical spacing
+        - Custom scrollbar styling for aesthetics
+        */
         .gallery-container {
-    width: 100vw;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    white-space: nowrap;
-    padding: 24px 0;
-    background: #fafafa;
-    scrollbar-color: #bbb #fafafa;
-    scrollbar-width: thin;
-}
-@media (max-width: 600px) {
-  .gallery-item,
-  .gallery-item.tall .scroll-viewport,
-  .gallery-item img,
-  .gallery-item img[src="8_appliances.png"],
-  .gallery-item img[src="9_Nutrition_Facts.png"] {
-    width: 33vw !important;
-    max-width: 350px !important;
-  }
-  .gallery-item,
-  .gallery-item.tall .scroll-viewport {
-    height: 60vw !important;
-    max-height: 220px !important;
-  }
-  .gallery-item img {
-    height: 38vw !important;
-    max-height: 200px !important;
-  }
-  .caption {
-    max-width: 25vw !important;
-    font-size: 0.5rem;
-  }
-}
+            width: 100vw;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            white-space: nowrap;
+            padding: 24px 0;
+            background: #fafafa;
+            scrollbar-color: #bbb #fafafa;
+            scrollbar-width: thin;
+        }
 
-.gallery-item {
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    vertical-align: top;
-    margin-right: 18px;
-    width: 170px;
-    height: 400px; /* 350px image + ~50px caption/margin */
-    box-sizing: border-box;
-    background: transparent;
-    position: relative;
-}
+        /*
+        RESPONSIVE DESIGN FOR MOBILE (<=600px)
+        --------------------------------------
+        - Makes images and containers much smaller on small screens
+        - vw = viewport width; rem = root font size
+        */
+        @media (max-width: 600px) {
+          .gallery-item,
+          .gallery-item.tall .scroll-viewport,
+          .gallery-item img,
+          .gallery-item img[src="8_appliances.png"],
+          .gallery-item img[src="9_Nutrition_Facts.png"] {
+            width: 33vw !important;
+            max-width: 350px !important;
+          }
+          .gallery-item,
+          .gallery-item.tall .scroll-viewport {
+            height: 60vw !important;
+            max-height: 220px !important;
+          }
+          .gallery-item img {
+            height: 38vw !important;
+            max-height: 200px !important;
+          }
+          .caption {
+            max-width: 25vw !important;
+            font-size: 0.5rem;
+          }
+        }
 
-/* For all images by default */
-.gallery-item img {
-    height: 350px;
-    width: 170px;
-    max-width: 100%;
-    object-fit: contain;
-    border-radius: 14px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-    transition: transform 0.22s cubic-bezier(0.4,0.2,0.2,1), box-shadow 0.18s;
-    cursor: pointer;
-    display: block;
-}
+        /*
+        GALLERY ITEM BLOCKS (EACH IMAGE+CAPTION)
+        ----------------------------------------
+        - Inline-flex for alignment
+        - Vertical stacking with flex-direction: column
+        - Each item is 170x400px (image + caption)
+        */
+        .gallery-item {
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            vertical-align: top;
+            margin-right: 18px;
+            width: 170px;
+            height: 400px; /* 350px image + ~50px caption/margin */
+            box-sizing: border-box;
+            background: transparent;
+            position: relative;
+        }
 
+        /*
+        IMAGE STYLING (DEFAULT)
+        -----------------------
+        - Each image is 170x350px
+        - object-fit: contain keeps aspect ratio, fits image inside box
+        - Rounded corners, drop shadow, and hover effect for polish
+        */
+        .gallery-item img {
+            height: 350px;
+            width: 170px;
+            max-width: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            transition: transform 0.22s cubic-bezier(0.4,0.2,0.2,1), box-shadow 0.18s;
+            cursor: pointer;
+            display: block;
+        }
 
-/* For tall images (8 & 9): Use a scrollable viewport */
-.gallery-item.tall .scroll-viewport {
-    width: 170px;
-    height: 350px;
-    overflow-y: auto;
-    background: #fff;
-    border-radius: 14px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-}
+        /*
+        SPECIAL CASE FOR TALL IMAGES (#8 AND #9)
+        -----------------------------------------
+        - These screenshots are much taller than they are wide
+        - Place them in a fixed-height/width viewport with vertical scroll
+        - Keeps captions aligned with other items, prevents gallery from stretching vertically
+        */
+        .gallery-item.tall .scroll-viewport {
+            width: 170px;
+            height: 350px;
+            overflow-y: auto;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
 
-.gallery-item.tall img {
-    height: auto;
-    width: 100%;
-    max-width: unset;
-    display: block;
-    object-fit: contain;
-    border-radius: 0;
-    box-shadow: none;
-}
+        .gallery-item.tall img {
+            height: auto;
+            width: 100%;
+            max-width: unset;
+            display: block;
+            object-fit: contain;
+            border-radius: 0;
+            box-shadow: none;
+        }
 
-.gallery-item img:hover {
-    transform: scale(1.13) translateY(-16px);
-    box-shadow: 0 16px 40px rgba(0,0,0,0.20);
-}
+        /*
+        HOVER EFFECT FOR ALL IMAGES
+        ---------------------------
+        - On hover, images "pop" larger and rise up with a shadow
+        - Smooth transition
+        */
+        .gallery-item img:hover {
+            transform: scale(1.13) translateY(-16px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.20);
+        }
 
-.caption {
-    margin-top: 10px;
-    text-align: center;
-    font-size: 1.05rem;
-    color: #333;
-    max-width: 170px;
-    overflow-wrap: break-word;
-}
+        /*
+        CAPTION STYLING
+        ---------------
+        - Spaced below image, centered, with line break support
+        - max-width aligns with item width
+        */
+        .caption {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 1.05rem;
+            color: #333;
+            max-width: 170px;
+            overflow-wrap: break-word;
+        }
 
+        /*
+        DUPLICATE/LEGACY SELECTORS
+        --------------------------
+        - These are repeated (harmless, but you can tidy them later if you wish)
+        */
         .gallery-item {
             display: inline-block;
             position: relative;
@@ -113,26 +175,29 @@
             vertical-align: top;
         }
         .gallery-item img {
-    height: 350px;
-    border-radius: 14px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-    transition: transform 0.22s cubic-bezier(0.4,0.2,0.2,1), box-shadow 0.18s;
-    cursor: pointer;
-}
+            height: 350px;
+            border-radius: 14px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            transition: transform 0.22s cubic-bezier(0.4,0.2,0.2,1), box-shadow 0.18s;
+            cursor: pointer;
+        }
 
-/* Make long images same width as others */
-.gallery-item img[src="8_appliances.png"],
-.gallery-item img[src="9_Nutrition_Facts.png"] {
-    height: auto;
-    width: 170px;
-    max-width: 100%;
-    display: inline-block;
-    object-fit: contain;
-}
+        /*
+        ENSURE TALL IMAGES (#8, #9) GET WIDTH LIKE OTHERS
+        -------------------------------------------------
+        */
+        .gallery-item img[src="8_appliances.png"],
+        .gallery-item img[src="9_Nutrition_Facts.png"] {
+            height: auto;
+            width: 170px;
+            max-width: 100%;
+            display: inline-block;
+            object-fit: contain;
+        }
         .gallery-item img:hover {
-    transform: scale(1.13) translateY(-16px);
-    box-shadow: 0 16px 40px rgba(0,0,0,0.20);
-}
+            transform: scale(1.13) translateY(-16px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.20);
+        }
         .caption {
             margin-top: 10px;
             text-align: center;
@@ -144,6 +209,11 @@
     </style>
 </head>
 <body>
+    <!--
+    The gallery uses a flex-row layout (inline-flex, white-space: nowrap)
+    Each .gallery-item contains one screenshot and a caption.
+    For screenshots #8 and #9, the .tall class and .scroll-viewport are used so the gallery stays compact and captions are aligned.
+    -->
     <div class="gallery-container">
         <div class="gallery-item">
             <img src="1_The_Wiz_recipe_conjurer.png" alt="The Wiz Recipe Conjurer">
