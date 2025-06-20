@@ -1,7 +1,14 @@
 <!--
 DOCUMENTATION: Scrollable Screenshot Gallery HTML
 
-This HTML file creates a horizontally scrollable gallery of PNG screenshots. It is designed to work well on desktop and mobile, and includes image captions, hover effects, and special handling for very tall images (like #8 and #9). All sizes and responsive features are customizable.
+This HTML file creates a horizontally scrollable gallery of PNG screenshots for use in web pages or Bubble apps.
+It is:
+- Responsive (images resize on mobile via a media query)
+- Includes image captions under each screenshot
+- Has special handling for tall screenshots (vertical scroll for #8 and #9)
+- Uses modern CSS for clean look and smooth hover effects
+
+Below, each section is explained in detail!
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -10,24 +17,23 @@ This HTML file creates a horizontally scrollable gallery of PNG screenshots. It 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Screenshot Gallery</title>
     <style>
-        /*
-        PAGE/BODY STYLING
-        -----------------
-        - Light background and sans-serif font for a clean, modern look
+        /* ----------------
+           BODY STYLES
+           ----------------
+           - Sets a light background and clean sans-serif font for the page
         */
         body {
             background: #f4f4f4;
             font-family: Arial, sans-serif;
         }
 
-        /*
-        MAIN GALLERY CONTAINER
-        ---------------------
-        - Horizontal scroll (overflow-x)
-        - No vertical scroll (overflow-y: hidden)
-        - Ensures items don't wrap (white-space: nowrap)
-        - Padding for vertical spacing
-        - Custom scrollbar styling for aesthetics
+        /* ------------------------------------------
+           MAIN GALLERY CONTAINER (.gallery-container)
+           ------------------------------------------
+           - Horizontally scrolls if images overflow
+           - Prevents vertical scrolling
+           - Keeps images in one row (nowrap)
+           - Adds padding and a custom scrollbar color
         */
         .gallery-container {
             width: 100vw;
@@ -41,11 +47,11 @@ This HTML file creates a horizontally scrollable gallery of PNG screenshots. It 
             scrollbar-width: thin;
         }
 
-        /*
-        RESPONSIVE DESIGN FOR MOBILE (<=600px)
-        --------------------------------------
-        - Makes images and containers much smaller on small screens
-        - vw = viewport width; rem = root font size
+        /* ---------------------------------------
+           RESPONSIVE DESIGN FOR SMALL SCREENS
+           ---------------------------------------
+           - When screen is 600px or less, switch sizing to viewport-relative units (vw)
+           - Keeps images and captions readable but compact on mobile
         */
         @media (max-width: 600px) {
           .gallery-item,
@@ -71,12 +77,11 @@ This HTML file creates a horizontally scrollable gallery of PNG screenshots. It 
           }
         }
 
-        /*
-        GALLERY ITEM BLOCKS (EACH IMAGE+CAPTION)
-        ----------------------------------------
-        - Inline-flex for alignment
-        - Vertical stacking with flex-direction: column
-        - Each item is 170x400px (image + caption)
+        /* -------------------------------------
+           GALLERY ITEM BLOCK (.gallery-item)
+           -------------------------------------
+           - Each item (screenshot+caption) is vertically stacked and aligned to the bottom
+           - Fixed width/height on desktop; responsive on mobile
         */
         .gallery-item {
             display: inline-flex;
@@ -92,12 +97,12 @@ This HTML file creates a horizontally scrollable gallery of PNG screenshots. It 
             position: relative;
         }
 
-        /*
-        IMAGE STYLING (DEFAULT)
-        -----------------------
-        - Each image is 170x350px
-        - object-fit: contain keeps aspect ratio, fits image inside box
-        - Rounded corners, drop shadow, and hover effect for polish
+        /* ------------------------------------
+           IMAGE STYLING (.gallery-item img)
+           ------------------------------------
+           - Each image fits a 170x350px box (on desktop)
+           - Rounded corners, subtle drop shadow
+           - Smooth "pop" effect on hover (scales/lifts image)
         */
         .gallery-item img {
             height: 350px;
@@ -111,12 +116,12 @@ This HTML file creates a horizontally scrollable gallery of PNG screenshots. It 
             display: block;
         }
 
-        /*
-        SPECIAL CASE FOR TALL IMAGES (#8 AND #9)
-        -----------------------------------------
-        - These screenshots are much taller than they are wide
-        - Place them in a fixed-height/width viewport with vertical scroll
-        - Keeps captions aligned with other items, prevents gallery from stretching vertically
+        /* -----------------------------------------------
+           SPECIAL CASE: TALL IMAGES (#8 and #9)
+           -----------------------------------------------
+           - These images are much taller than wide.
+           - Placed inside a .scroll-viewport, which is a fixed-height/width scroll box
+           - This keeps all captions aligned and gallery tidy
         */
         .gallery-item.tall .scroll-viewport {
             width: 170px;
@@ -137,22 +142,21 @@ This HTML file creates a horizontally scrollable gallery of PNG screenshots. It 
             box-shadow: none;
         }
 
-        /*
-        HOVER EFFECT FOR ALL IMAGES
-        ---------------------------
-        - On hover, images "pop" larger and rise up with a shadow
-        - Smooth transition
+        /* ----------------------------
+           HOVER EFFECT FOR IMAGES
+           ----------------------------
+           - Scales and lifts image with shadow when hovered
         */
         .gallery-item img:hover {
             transform: scale(1.13) translateY(-16px);
             box-shadow: 0 16px 40px rgba(0,0,0,0.20);
         }
 
-        /*
-        CAPTION STYLING
-        ---------------
-        - Spaced below image, centered, with line break support
-        - max-width aligns with item width
+        /* ------------------------------
+           CAPTION STYLING (.caption)
+           ------------------------------
+           - Spaced below image
+           - Centered, with line break support
         */
         .caption {
             margin-top: 10px;
@@ -163,11 +167,9 @@ This HTML file creates a horizontally scrollable gallery of PNG screenshots. It 
             overflow-wrap: break-word;
         }
 
-        /*
-        DUPLICATE/LEGACY SELECTORS
-        --------------------------
-        - These are repeated (harmless, but you can tidy them later if you wish)
-        */
+        /* --------------------------------------------------
+           DUPLICATE/LEGACY SELECTORS (can be cleaned up later)
+           -------------------------------------------------- */
         .gallery-item {
             display: inline-block;
             position: relative;
@@ -182,10 +184,9 @@ This HTML file creates a horizontally scrollable gallery of PNG screenshots. It 
             cursor: pointer;
         }
 
-        /*
-        ENSURE TALL IMAGES (#8, #9) GET WIDTH LIKE OTHERS
-        -------------------------------------------------
-        */
+        /* ----------------------------------------
+           ENSURE WIDTH FOR #8 & #9 MATCH OTHERS
+           ---------------------------------------- */
         .gallery-item img[src="8_appliances.png"],
         .gallery-item img[src="9_Nutrition_Facts.png"] {
             height: auto;
@@ -215,9 +216,11 @@ This HTML file creates a horizontally scrollable gallery of PNG screenshots. It 
     For screenshots #8 and #9, the .tall class and .scroll-viewport are used so the gallery stays compact and captions are aligned.
     -->
     <div class="gallery-container">
+        <!-- Each .gallery-item below is a screenshot + caption. 
+             For tall images (#8 and #9), a .scroll-viewport is used for vertical scrolling. -->
         <div class="gallery-item">
             <img src="1_The_Wiz_recipe_conjurer.png" alt="The Wiz Recipe Conjurer">
-            <div class="caption">The Wiz Recipe</div>
+            <div class="caption">Wiz Recipes</div>
         </div>
         <div class="gallery-item">
             <img src="2_Recipe_manager.png" alt="Recipe Manager">
@@ -244,17 +247,17 @@ This HTML file creates a horizontally scrollable gallery of PNG screenshots. It 
             <div class="caption">Units</div>
         </div>
         <div class="gallery-item tall">
-    <div class="scroll-viewport">
-        <img src="8_appliances.png" alt="Appliances">
-    </div>
-    <div class="caption">Appliances</div>
-</div>
+            <div class="scroll-viewport">
+                <img src="8_appliances.png" alt="Appliances">
+            </div>
+            <div class="caption">Appliances</div>
+        </div>
         <div class="gallery-item tall">
-    <div class="scroll-viewport">
-        <img src="9_Nutrition_Facts.png" alt="Nutrition Facts">
-    </div>
-    <div class="caption">Nutrition Facts</div>
-</div>
+            <div class="scroll-viewport">
+                <img src="9_Nutrition_Facts.png" alt="Nutrition Facts">
+            </div>
+            <div class="caption">Nutrition Facts</div>
+        </div>
     </div>
 </body>
 </html>
