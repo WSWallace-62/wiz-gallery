@@ -88,10 +88,17 @@ Below, each section is explained in detail!
             max-height: 320px !important;
           }
           .caption {
-            max-width: 25vw !important;
+            margin-top: 0px;
+            margin-bottom: 8px;   /* <-- This line adds space below caption */
+            text-align: center;
+            font-size: 0.5rem;
+            color: #333;
+            max-width: 170px;
+            overflow-wrap: break-word;
+            /* max-width: 25vw !important;
             font-size: 0.5rem;
             text-align: center;
-            width: 100%;
+            width: 100%; */
           }
         }
 
@@ -237,9 +244,8 @@ Below, each section is explained in detail!
         <!-- Each .gallery-item below is a screenshot + caption. 
              For tall images (#8 and #9), a .scroll-viewport is used for vertical scrolling. -->
         <div class="gallery-item">
-            <div class="caption">The Wiz 5</div>
+            <div class="caption">The Wiz 6</div>
             <img src="1_The_Wiz_recipe_conjurer.png" alt="The Wiz Recipe Conjurer">
-  /*          <div class="caption">The Wiz 5</div>  */
         </div>
         <div class="gallery-item">
             <img src="2_Recipe_manager.png" alt="Recipe Manager">
