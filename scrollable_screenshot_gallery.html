@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screenshot Gallery</title>
+    <style>
+        body {
+            background: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+        .gallery-container {
+    width: 100vw;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    padding: 24px 0;
+    background: #fafafa;
+    scrollbar-color: #bbb #fafafa;
+    scrollbar-width: thin;
+}
+
+.gallery-item {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    vertical-align: top;
+    margin-right: 18px;
+    width: 340px;
+    height: 750px; /* 700px image + ~50px caption/margin */
+    box-sizing: border-box;
+    background: transparent;
+    position: relative;
+}
+
+/* For all images by default */
+.gallery-item img {
+    height: 700px;
+    width: 340px;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 14px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    transition: transform 0.22s cubic-bezier(0.4,0.2,0.2,1), box-shadow 0.18s;
+    cursor: pointer;
+    display: block;
+}
+
+
+/* For tall images (8 & 9): Use a scrollable viewport */
+.gallery-item.tall .scroll-viewport {
+    width: 340px;
+    height: 700px;
+    overflow-y: auto;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.gallery-item.tall img {
+    height: auto;
+    width: 100%;
+    max-width: unset;
+    display: block;
+    object-fit: contain;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.13) translateY(-16px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.20);
+}
+
+.caption {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 1.05rem;
+    color: #333;
+    max-width: 340px;
+    overflow-wrap: break-word;
+}
+
+        .gallery-item {
+            display: inline-block;
+            position: relative;
+            margin-right: 18px;
+            vertical-align: top;
+        }
+        .gallery-item img {
+    height: 700px;
+    border-radius: 14px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    transition: transform 0.22s cubic-bezier(0.4,0.2,0.2,1), box-shadow 0.18s;
+    cursor: pointer;
+}
+
+/* Make long images same width as others */
+.gallery-item img[src="8_appliances.png"],
+.gallery-item img[src="9_Nutrition_Facts.png"] {
+    height: auto;
+    width: 340px;
+    max-width: 100%;
+    display: inline-block;
+    object-fit: contain;
+}
+        .gallery-item img:hover {
+    transform: scale(1.13) translateY(-16px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.20);
+}
+        .caption {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 1.05rem;
+            color: #333;
+            max-width: 340px;
+            overflow-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery-container">
+        <div class="gallery-item">
+            <img src="1_The_Wiz_recipe_conjurer.png" alt="The Wiz Recipe Conjurer">
+            <div class="caption">The Wiz Recipe Conjurer</div>
+        </div>
+        <div class="gallery-item">
+            <img src="2_Recipe_manager.png" alt="Recipe Manager">
+            <div class="caption">Recipe Manager</div>
+        </div>
+        <div class="gallery-item">
+            <img src="3_completed_recipe.png" alt="Completed Recipe">
+            <div class="caption">Completed Recipe</div>
+        </div>
+        <div class="gallery-item">
+            <img src="4_serving_size.png" alt="Serving Size">
+            <div class="caption">Serving Size</div>
+        </div>
+        <div class="gallery-item">
+            <img src="5_Foods_to_avoid.png" alt="Foods to Avoid">
+            <div class="caption">Foods to Avoid</div>
+        </div>
+        <div class="gallery-item">
+            <img src="6_food_types.png" alt="Food Types">
+            <div class="caption">Food Types</div>
+        </div>
+        <div class="gallery-item">
+            <img src="7_Units.png" alt="Units">
+            <div class="caption">Units</div>
+        </div>
+        <div class="gallery-item tall">
+    <div class="scroll-viewport">
+        <img src="8_appliances.png" alt="Appliances">
+    </div>
+    <div class="caption">Appliances</div>
+</div>
+        <div class="gallery-item tall">
+    <div class="scroll-viewport">
+        <img src="9_Nutrition_Facts.png" alt="Nutrition Facts">
+    </div>
+    <div class="caption">Nutrition Facts</div>
+</div>
+    </div>
+</body>
+</html>
