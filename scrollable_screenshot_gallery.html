@@ -64,8 +64,16 @@ Below, each section is explained in detail!
           }
           .gallery-item,
           .gallery-item.tall .scroll-viewport {
-            height: 75vw !important;
+            width: 50vw !important;     /* or adjust for desired width */
+            height: 75vw !important;    /* or adjust for desired height */
+            max-width: 350px !important;
             max-height: 320px !important;
+            overflow-y: auto !important;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            /* height: 75vw !important;  */
+            /* max-height: 320px !important;  */
           }
           .gallery-item img {
             height: 75vw !important;
