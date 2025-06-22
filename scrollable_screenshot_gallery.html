@@ -53,56 +53,60 @@ Below, each section is explained in detail!
            - When screen is 768px or less, switch sizing to viewport-relative units (vw)
            - Keeps images and captions readable but compact on mobile
         */
-        @media (max-width: 768px) {
-          .gallery-item,
-          .gallery-item.tall .scroll-viewport,
-          .gallery-item img,
-          .gallery-item img[src="8_appliances.png"],
-          .gallery-item img[src="9_Nutrition_Facts.png"] {
-            /* width: 50vw !important; */
-            /* max-width: 350px !important;  */
-          }
-          .gallery-item,
-          .gallery-item.tall .scroll-viewport {             
-            width: 50vw !important;     /* or adjust for desired width */
-            max-width: 350px !important;              
-            height: 85vw !important;    /* or adjust for desired height */
-            max-height: 320px !important;
-            overflow-y: auto !important;
-            background: #fff;
-            border-radius: 14px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.08); */
-          }
-          .gallery-item.tall img {
-            width: 100% !important;
-            height: auto !important;
-            max-width: unset !important;
-            display: block;
-            object-fit: contain;
-          }
-          .gallery-item img {
-            width: 100% !important;
-            height: auto !important;
-            max-width: unset !important;
-            display: block;
-            object-fit: contain;
-            /* height: 100% !important;  /*changed from 75% */
-            max-height: 500px !important;
-          }
-          .caption {
-            margin-top: 0px;
-            margin-bottom: 8px;   /* <-- This line adds space below caption */
-            text-align: center;
-            font-size: 0.5rem;
-            color: #333;
-            max-width: 170px;
-            overflow-wrap: break-word;
-            /* max-width: 25vw !important;
-            font-size: 0.5rem;
-            text-align: center;
-            width: 100%; */
-          }
+      @media (max-width: 768px) {
+        /* All gallery items are 50vw wide, so two fit across */
+        .gallery-item
+          width: 50vw !important;
+          min-width: 50vw !important;
+          max-width: 50vw !important;
+          height: auto !important;
+          margin-right: 0;
+          padding: 0 2vw;
+          box-sizing: border-box;
         }
+    
+        /* Regular images: 100% width, auto height */
+        .gallery-item img {
+          width: 100% !important;
+          height: auto !important;
+          max-width: 100% !important;
+          display: block;
+          object-fit: contain;
+          border-radius: 14px;
+        }
+    
+        /* Tall images: scrollable window with same width, fixed height, vertical scroll */
+        .gallery-item.tall .scroll-viewport {
+          width: 100% !important;
+          height: 65vw !important; /* Adjust this if you want taller/shorter window */
+          max-width: 100% !important;
+          overflow-y: auto !important;
+          border-radius: 14px;
+          box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+          background: #fff;
+          padding: 0;
+        }
+    
+        .gallery-item.tall img {
+          width: 100% !important;
+          height: auto !important;
+          max-width: unset !important;
+          display: block;
+          object-fit: contain;
+        }
+    
+        /* Captions centered, with spacing */
+        .caption {
+          margin-top: 6px;
+          margin-bottom: 8px;
+          text-align: center;
+          font-size: 0.95rem;
+          color: #333;
+          width: 100%;
+          max-width: unset;
+        }
+      }
+
 
         /* -------------------------------------
            GALLERY ITEM BLOCK (.gallery-item)
