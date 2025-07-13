@@ -54,16 +54,16 @@ Below, each section is explained in detail!
            - Keeps images and captions readable but compact on mobile
         */
         @media (max-width: 768px) {
-          .gallery-item,
+/*           .gallery-item,
           .gallery-item.tall .scroll-viewport,
           .gallery-item img,
           .gallery-item img[src="8_appliances.png"],
           .gallery-item img[src="9_Nutrition_Facts.png"] {
             /* width: 50vw !important; */
             /* max-width: 350px !important;  */
-          }
-          /* .gallery-item, */
-          .gallery-item.tall .scroll-viewport {             
+          } */
+          /* .gallery-item, */ /* This comment was potentially causing an issue with the following ruleset */
+          .gallery-item.tall .scroll-viewport {
             width: 50vw !important;     /* or adjust for desired width */
             max-width: 350px !important;              
             height: 105vw !important;    /* or adjust for desired height - was 120vw */
@@ -72,7 +72,7 @@ Below, each section is explained in detail!
             background: #fff;
             border-radius: 14px;
             box-shadow: 0 3px 12px rgba(0,0,0,0.08); */
-          }
+        /*  } */
           .gallery-item.tall img {
             width: 100% !important;
             height: auto !important;
@@ -234,6 +234,7 @@ Below, each section is explained in detail!
             max-width: 170px;
             overflow-wrap: break-word;
         }
+    /*  } */
     </style>
 </head>
 <body>
